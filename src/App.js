@@ -38,7 +38,15 @@ class App extends Component {
         <h1>Hi, Im an react app</h1>
           <p>This is really working</p>
           <button
-              onClick={() => this.switchNameHandler('Beelarr!!')}>
+              onClick={() => this.switchNameHandler('Beelarr!!')}
+              style={{
+                  backgroundColor: 'white',
+                  font: 'inherit',
+                  border: '1px solid blue',
+                  padding: '1%',
+                  cursor: 'pointer'
+              }}
+          >
             Switch Name
           </button>
           <Person
