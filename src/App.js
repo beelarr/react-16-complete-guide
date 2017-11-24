@@ -9,14 +9,18 @@ class App extends Component {
         { name: 'Lori', age: 42 },
         { name: 'Jude', age: 12 }
     ]
-  };
+  }
+
+  switchNameHandler = () => {
+
+  }
 
   render() {
     return (
       <div className="App">
         <h1>Hi, Im an react app</h1>
           <p>This is really working</p>
-          <button>Switch Name</button>
+          <button onClick={this.switchNameHandler}>Switch Name</button>
           <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
           <Person name={this.state.persons[1].name} age={this.state.persons[1].name}>Passing through props.childern in parent/</Person>
           <Person name={this.state.persons[2].name} age={this.state.persons[2].name}/>
