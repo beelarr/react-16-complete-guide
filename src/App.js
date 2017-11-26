@@ -6,28 +6,35 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-        { name: 'Bryon', age: 41 },
-        { name: 'Lori', age: 42 },
-        { name: 'Jude', age: 12 }
+        { id: 3211, name: 'Bryon', age: 41 },
+        { id: 312, name: 'Lori', age: 42 },
+        { id: 13, name: 'Jude', age: 12 }
     ],
       showPeople: false
   }
 
   deletePersonHandler = (personIndex) => {
-    const persons = [...this.state.persons];
+    let persons = [...this.state.persons];
     persons.splice(personIndex, 1);  // remove one item at index = personIndex
     this.setState({persons: persons})
   };
 
-  nameChangedHandler = (event) => {
+  nameChangedHandler = (event, id) => {
+      const personIndex = this.state.persons.findIndex(p => {
+          return p.id === id;
+      });
+
+      const person = { ...this.state.persons[personIndex] }; //creates a new object in person of who we clicked
+
+      person.name = event.target.value; // who we are dynamically changing on the screen
+
+      let persons = [...this.state.persons];
+      persons[personIndex] = person;  //person is the object of the person we are editing and we are saying it is equal to the person on the index from where we clicked
+
       this.setState( {
-          persons: [
-              { id: 3211, name: 'Bryon', age: 41 },
-              { id: 312, name: event.target.value, age: 42 },
-              { id: 13, name: 'Jude Porter', age: 13 }
-          ]
+          persons: persons  // updating the state of the persons array of people
       })
-  }
+  };
 
     togglePersonHandler = () => {
         let doesShow = this.state.showPeople;
@@ -46,7 +53,8 @@ class App extends Component {
                               taco={() => this.deletePersonHandler(index)}
                               name={person.name}
                               age={person.age}
-                              key={id}
+                              key={person.id}
+                              burrito={(event) => this.nameChangedHandler(event, person.id)}
                           />)
                   })}
               </div>
