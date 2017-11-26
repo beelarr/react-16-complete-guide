@@ -39,6 +39,30 @@ class App extends Component {
     };
 
   render() {
+
+      let persons;
+      if (this.state.showPeople) {
+          persons =(
+              <div>
+                  <Person
+                      name={this.state.persons[0].name}
+                      age={this.state.persons[0].age}
+                      taco={this.switchNameHandler}
+                  />
+
+                  <Person
+                      name={this.state.persons[1].name}
+                      age={this.state.persons[1].age}
+                      burrito={this.nameChangedHandler}
+                  >Passing through props.childern in parent/</Person>
+                  <Person
+                      name={this.state.persons[2].name}
+                      age={this.state.persons[2].age}
+                      taco={this.switchNameHandler.bind(this, 'Jude Porter')}
+                  />
+              </div>
+          );
+      }
     return (
       <div className="App">
         <h1>Hi, Im an react app</h1>
@@ -54,25 +78,12 @@ class App extends Component {
               }}>
             Toggle People
           </button>
-          { this.state.showPeople ?
-          <div>
-          <Person
-              name={this.state.persons[0].name}
-              age={this.state.persons[0].age}
-              taco={this.switchNameHandler}
-          />
+          {persons}
 
-          <Person
-              name={this.state.persons[1].name}
-              age={this.state.persons[1].age}
-              burrito={this.nameChangedHandler}
-          >Passing through props.childern in parent/</Person>
-          <Person
-              name={this.state.persons[2].name}
-              age={this.state.persons[2].age}
-              taco={this.switchNameHandler.bind(this, 'Jude Porter')}
-          />
-          </div>  : null }
+
+
+
+
       </div>
         
     );
