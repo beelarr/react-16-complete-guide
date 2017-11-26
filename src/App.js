@@ -13,22 +13,18 @@ class App extends Component {
       showPeople: false
   }
 
-  switchNameHandler = (newName) => {
-      this.setState( {
-          persons: [
-          { name: newName, age: 41 },
-          { name: 'Lori', age: 42 },
-          { name: 'Jude Porter', age: 13 }
-      ]
-      })
-  }
+  deletePersonHandler = (personIndex) => {
+    const persons = [...this.state.persons];
+    persons.splice(personIndex, 1);  // remove one item at index = personIndex
+    this.setState({persons: persons})
+  };
 
   nameChangedHandler = (event) => {
       this.setState( {
           persons: [
-              { name: 'Bryon', age: 41 },
-              { name: event.target.value, age: 42 },
-              { name: 'Jude Porter', age: 13 }
+              { id: 3211, name: 'Bryon', age: 41 },
+              { id: 312, name: event.target.value, age: 42 },
+              { id: 13, name: 'Jude Porter', age: 13 }
           ]
       })
   }
@@ -44,11 +40,13 @@ class App extends Component {
       if (this.state.showPeople) {
           persons =(
               <div>
-                  {this.state.persons.map(person => {
+                  {this.state.persons.map((person, index) => {
                       return(
                           <Person
+                              taco={() => this.deletePersonHandler(index)}
                               name={person.name}
                               age={person.age}
+                              key={id}
                           />)
                   })}
               </div>
