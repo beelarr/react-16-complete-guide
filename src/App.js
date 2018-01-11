@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) => {
-    let persons = [...this.state.persons];
+    let persons = [...this.state.persons]; // always creates a new array from our state.persons array
     persons.splice(personIndex, 1);  // remove one item at index = personIndex
     this.setState({persons: persons})
   };
@@ -62,7 +62,7 @@ class App extends Component {
       }
     return (
       <div className="App">
-        <h1>Hi, Im an react app</h1>
+        <h1>Hi, I'm an react app</h1>
           <p>This is really working</p>
           <button
               onClick={this.togglePersonHandler}
