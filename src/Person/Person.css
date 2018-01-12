@@ -6,3 +6,15 @@
     padding: 3%;
     text-align: center;
 }
+
+@media (min-width: 500px) {
+    .Person {
+        width: 80%;
+    }
+}
+
+@media (max-width: 220px) {
+    input {
+        width: 80%
+    }
+}
