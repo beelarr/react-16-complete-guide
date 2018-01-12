@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import cssStyles from './App.css';
+import ErrorBoundry from './ErrorBoundry/ErrorBoundry';
 
 import Person from './Person/Person';
 
@@ -50,14 +51,17 @@ class App extends Component {
           persons =(
               <div>
                   {this.state.persons.map((person, index) => {
-                      return(
-                          <Person
-                              taco={() => this.deletePersonHandler(index)}
-                              name={person.name}
-                              age={person.age}
-                              key={person.id}
-                              burrito={(event) => this.nameChangedHandler(event, person.id)}
-                          />)
+                      return (
+                          <ErrorBoundry key={person.id} >
+                              <Person
+                                  taco={() => this.deletePersonHandler(index)}
+                                  name={person.name}
+                                  age={person.age}
+                                  burrito={(event) => this.nameChangedHandler(event, person.id)}
+                              />
+
+                          </ErrorBoundry>
+                      )
                   })}
               </div>
           );
