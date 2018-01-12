@@ -43,6 +43,15 @@ class App extends Component {
 
   render() {
 
+      const buttonStyle = {
+          backgroundColor: 'green',
+          color: 'white',
+          font: 'inherit',
+          border: '1px solid blue',
+          padding: '1%',
+          cursor: 'pointer'
+      };
+
       let persons;
       if (this.state.showPeople) {
           persons =(
@@ -59,6 +68,7 @@ class App extends Component {
                   })}
               </div>
           );
+          buttonStyle.backgroundColor = 'red'
       }
     return (
       <div className="App">
@@ -66,13 +76,7 @@ class App extends Component {
           <p>This is really working</p>
           <button
               onClick={this.togglePersonHandler}
-              style={{
-                  backgroundColor: 'white',
-                  font: 'inherit',
-                  border: '1px solid blue',
-                  padding: '1%',
-                  cursor: 'pointer'
-              }}>
+              style={buttonStyle}>
             Toggle People
           </button>
           {persons}
