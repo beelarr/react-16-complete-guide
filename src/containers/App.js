@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import cssStyles from './App.css';
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
+import People from '../components/People/People';
 
 import Person from '../components/People/Person/Person';
 
@@ -50,20 +51,12 @@ class App extends Component {
       if (this.state.showPeople) {
           persons =(
               <div>
-                  {this.state.persons.map((person, index) => {
-                      return (
-                          <ErrorBoundry key={person.id} >
-                              <Person
-                                  taco={() => this.deletePersonHandler(index)}
-                                  name={person.name}
-                                  age={person.age}
-                                  burrito={(event) => this.nameChangedHandler(event, person.id)}
-                              />
-
-                          </ErrorBoundry>
-                      )
-                  })}
-              </div>
+                  <People
+                      persons={this.state.persons}
+                      delete={this.deletePersonHandler}
+                      change={this.nameChangedHandler}
+                  />
+             </div>
           );
 
           btnClass = cssStyles.red;
