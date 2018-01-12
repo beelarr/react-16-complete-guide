@@ -15,6 +15,7 @@ button:hover {
 
 button.red {
   background-color: red;
+  color: white;
 }
 
 button.red:hover {

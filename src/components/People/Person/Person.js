@@ -2,10 +2,10 @@ import React from 'react';
 import cssStyles from './Person.css';
 
 const person = (props) => {
-    const random = Math.random();
-    if (random > 0.5) {
-        throw new Error('Something is broke')
-    }
+    // const random = Math.random();
+    // if (random > 0.5) {
+    //     throw new Error('Something is broke')
+    // }
 
     return (
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import cssStyles from './App.css';
-import ErrorBoundry from './ErrorBoundry/ErrorBoundry';
+import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
 
-import Person from './Person/Person';
+import Person from '../components/People/Person/Person';
 
 class App extends Component {
   state = {
@@ -83,7 +83,8 @@ class App extends Component {
               <p className={classes.join(' ')}>This is really working</p>
               <button
                   className={btnClass}
-                  onClick={this.togglePersonHandler} >
+                  onClick={this.togglePersonHandler}
+              >
                 Toggle People
               </button>
               {persons}
