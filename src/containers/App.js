@@ -4,6 +4,20 @@ import People from '../components/People/People';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+    console.log('These are my props', props);
+    }
+
+    componentWillMount() {
+        console.log('App.js cwm', );
+    };
+    
+    componentDidMount() {
+        console.log('App.js cdm');
+    }
+
+
   state = {
     persons: [
         { id: 3211, name: 'Bryon', age: 41 },
@@ -42,7 +56,8 @@ class App extends Component {
     };
 
   render() {
-
+        
+      console.log('Inside App.js render');
       let persons;
 
       if (this.state.showPeople) {
