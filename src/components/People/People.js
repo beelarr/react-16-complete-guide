@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Person from './Person/Person';
 
-class People extends Component {
+class People extends PureComponent {
     constructor(props) {
         super(props);
         console.log('These are my props', props);
@@ -15,11 +15,11 @@ class People extends Component {
         console.log('People.js cdm');
     }
 
-    shouldComponentUpdate( nextProps, nextState ) {
-        return nextProps.persons !== this.props.persons ||
-                nextProps.change !== this.props.change;
-                nextProps.delete !== this.props.delete;
-    };
+    // shouldComponentUpdate( nextProps, nextState ) {
+    //     return nextProps.persons !== this.props.persons ||
+    //             nextProps.change !== this.props.change;
+    //             nextProps.delete !== this.props.delete;
+    // };
 
 
     render() {

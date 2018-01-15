@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import cssStyles from './App.css';
 import People from '../components/People/People';
 import Cockpit from '../components/Cockpit/Cockpit';
 
-class App extends Component {
+class App extends PureComponent {
     constructor(props) {
         super(props);
     console.log('These are my props', props);
@@ -26,10 +26,10 @@ class App extends Component {
         console.log('App.js cdm');
     }
 
-    shouldComponentUpdate( nextProps, nextState ) {
-        return nextState.persons !== this.state.persons ||
-                nextState.showPeople !== this.state.showPeople
-    }
+    // shouldComponentUpdate( nextProps, nextState ) {
+    //     return nextState.persons !== this.state.persons ||
+    //             nextState.showPeople !== this.state.showPeople
+    // }
 
 
 
