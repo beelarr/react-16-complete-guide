@@ -9,6 +9,15 @@ class App extends Component {
     console.log('These are my props', props);
     }
 
+    state = {
+        persons: [
+            { id: 3211, name: 'Bryon', age: 41 },
+            { id: 312, name: 'Lori', age: 42 },
+            { id: 13, name: 'Jude', age: 12 }
+        ],
+        showPeople: false
+    }
+
     componentWillMount() {
         console.log('App.js cwm', );
     };
@@ -17,15 +26,13 @@ class App extends Component {
         console.log('App.js cdm');
     }
 
+    shouldComponentUpdate( nextProps, nextState ) {
+        return nextState.persons !== this.state.persons ||
+                nextState.showPeople !== this.state.showPeople
+    }
 
-  state = {
-    persons: [
-        { id: 3211, name: 'Bryon', age: 41 },
-        { id: 312, name: 'Lori', age: 42 },
-        { id: 13, name: 'Jude', age: 12 }
-    ],
-      showPeople: false
-  }
+
+
 
   deletePersonHandler = (personIndex) => {
     let persons = [...this.state.persons]; // always creates a new array from our state.persons array
@@ -70,6 +77,7 @@ class App extends Component {
 
       return (
           <div className={cssStyles.App}>
+              <button onClick={() => this.setState({showPeople: true})}>Show Persons</button>
               <Cockpit
                 showPeople={this.state.showPeople}
                 persons={this.state.persons}

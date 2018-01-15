@@ -15,6 +15,13 @@ class People extends Component {
         console.log('People.js cdm');
     }
 
+    shouldComponentUpdate( nextProps, nextState ) {
+        return nextProps.persons !== this.props.persons ||
+                nextProps.change !== this.props.change;
+                nextProps.delete !== this.props.delete;
+    };
+
+
     render() {
               return  this.props.persons.map( (person, index) => {
             return (
@@ -23,7 +30,7 @@ class People extends Component {
                         name={person.name}
                         age={person.age}
                         key={person.id}
-                        burrito={(event) => this.props.changed(event, person.id)}
+                        burrito={(event) => this.props.change(event, person.id)}
                     />
             )
                 })
